@@ -18,8 +18,10 @@ function App() {
 
   return (
     <div className="App">
-      <Route path='/home' element={<Home />} />
-      {products && products.map(product => <p>{product.name}</p>)}
+      <Routes>
+        <Route path='/home' element={<Home />} />
+        {products && products.map(product => <p>{product.name}</p>)}
+      </Routes>
 
     </div>
   );
