@@ -1,4 +1,6 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
 
 function App() {
 
@@ -16,7 +18,8 @@ function App() {
 
   return (
     <div className="App">
-      {products && products.map(product => <h1>{product.name}</h1>)}
+      <Route path='/home' element={<Home />} />
+      {products && products.map(product => <p>{product.name}</p>)}
 
     </div>
   );
