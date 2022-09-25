@@ -5,7 +5,7 @@ const List = () => {
   const [products, setProducts] = useState()
 
   const getProducts = async () => {
-    const response = await fetch('https://estherandvidar-shopping.herokuapp.com/api/products')
+    const response = await fetch('https://bilkalkyl-v2.com/api/products')
     const data = await response.json()
     return data
   }
