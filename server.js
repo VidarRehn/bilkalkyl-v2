@@ -27,7 +27,7 @@ const User = mongoose.model('User', userSchema)
 
 //API routes
 
-app.get('/api/userss', (req, res) => {
+app.get('/api/users', (req, res) => {
     User.find().then(user => res.json(user))
 })
 
