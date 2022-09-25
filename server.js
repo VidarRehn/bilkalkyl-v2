@@ -13,22 +13,22 @@ app.use(cors())
 
 //mongoose
 
-mongoose.connect('mongodb+srv://vidar:Mamail12@cluster0.lqu9b.mongodb.net/shopping-list')
+mongoose.connect('mongodb+srv://vidar:vidar@cluster0.biajbry.mongodb.net/bilkalkyl')
 
 //data schema + model
 
-const productSchema = {
+const userSchema = {
     name: String,
     category: String,
     inShoppingList: Boolean
 }
 
-const Product = mongoose.model('Product', productSchema)
+const User = mongoose.model('User', userSchema)
 
 //API routes
 
-app.get('/api/products', (req, res) => {
-    Product.find().then(products => res.json(products))
+app.get('/api/userss', (req, res) => {
+    User.find().then(user => res.json(user))
 })
 
 // build/static

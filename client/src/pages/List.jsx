@@ -2,21 +2,21 @@ import { useState, useEffect } from 'react'
 
 const List = () => {
 
-  const [products, setProducts] = useState()
+  const [users, setUsers] = useState()
 
-  const getProducts = async () => {
-    const response = await fetch('https://bilkalkyl-v2.com/api/products')
+  const getUsers = async () => {
+    const response = await fetch('https://bilkalkyl-v2.herokuapp.com/api/users')
     const data = await response.json()
     return data
   }
 
   useEffect(() => {
-    getProducts().then(data => setProducts(data))
+    getUsers().then(data => setUsers(data))
   }, [])
 
     return (
         <div>
-        {products && products.map(product => <p>{product.name}</p>)}
+        {users && users.map(user => <p>{user.name}</p>)}
         </div>
     )
 }
