@@ -28,8 +28,20 @@ const User = mongoose.model('User', userSchema)
 //API routes
 
 app.get('/api/users', (req, res) => {
-    User.find().then(user => res.json(user))
+    User.find().then(users => res.json(users))
 })
+
+app.get('/api/events', (req, res) => {
+    User.find({}, {events: 1, name: 1}, 
+        (err, data) => {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json(data)
+        }
+    })
+})
+
 
 // build/static
 
