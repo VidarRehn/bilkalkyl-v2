@@ -28,11 +28,26 @@ const User = mongoose.model('User', userSchema)
 //API routes
 
 app.get('/api/users', (req, res) => {
-    User.find().then(users => res.json(users))
+    User.find().then(data => res.json(data))
 })
 
 app.get('/api/events', (req, res) => {
-    User.find({}, {events: 1, name: 1}, 
+    User.find({}, {events: 1, name: 1}).then(data => res.json(data))
+})
+
+app.get('/api/bookings', (req, res) => {
+    User.find({}, {bookings: 1, name: 1}, 
+        (err, data) => {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json(data)
+        }
+    })
+})
+
+app.get('/api/payments', (req, res) => {
+    User.find({}, {payments: 1, name: 1}, 
         (err, data) => {
         if (err) {
             res.json(err)
