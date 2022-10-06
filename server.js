@@ -36,25 +36,11 @@ app.get('/api/events', (req, res) => {
 })
 
 app.get('/api/bookings', (req, res) => {
-    User.find({}, {bookings: 1, name: 1}, 
-        (err, data) => {
-        if (err) {
-            res.json(err)
-        } else {
-            res.json(data)
-        }
-    })
+    User.find({}, {bookings: 1, name: 1}).then(data => res.json(data))
 })
 
 app.get('/api/payments', (req, res) => {
-    User.find({}, {payments: 1, name: 1}, 
-        (err, data) => {
-        if (err) {
-            res.json(err)
-        } else {
-            res.json(data)
-        }
-    })
+    User.find({}, {payments: 1, name: 1}).then(data => res.json(data))
 })
 
 

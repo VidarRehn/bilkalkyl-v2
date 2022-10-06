@@ -9,23 +9,32 @@ export const getEvents = createAsyncThunk('events/getEvents', async () => {
 const eventsSlice = createSlice({
     name: 'events',
     initialState: {
-        events: []
+        events: null
     },
     reducers: {
         //actions
     },
     extraReducers: {
         [getEvents.fulfilled]: (state, action) => {
-            state.events = action.payload
-            console.log(state.events)
+            let array = [] 
+            action.payload.forEach(user => {
+                user.events.forEach(event => {
+                    let obj = {
+                        user: user.name,
+                        eventDate: event.eventDate,
+                        mileageBefore: event.mileageBefore,
+                        mileageAfter: event.mileageAfter,   
+                    }
+                    array.push(obj)
+                });
+            })
+        state.events = array
         },
         [getEvents.pending]: (state) => {
             state.status = 'Loading...'
-            console.log('pending')
         },
         [getEvents.rejected]: (state) => {
             state.status = 'Failed to get data.'
-            console.log('failed')
         }
     }
 })

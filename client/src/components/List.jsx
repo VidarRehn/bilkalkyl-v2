@@ -13,7 +13,7 @@ const List = () => {
 
     return (
         <div>
-        {users && users.map(user => <p>{user.name}</p>)}
+        this is users
         </div>
     )
 }

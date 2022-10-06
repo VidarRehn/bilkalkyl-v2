@@ -12,7 +12,19 @@ const Events = () => {
     }, [])
 
     return (
-        <div>this is events</div>
+        <div>
+          <h4>Körningar</h4>
+          <ul>
+            {events && events.map((event, i) => {
+              return (
+                <li key={i}>
+                  <p>{event.user}</p>
+                  <p>{event.mileageBefore}</p>
+                </li>
+              )
+            })}
+          </ul>
+        </div>
     )
 }
 
