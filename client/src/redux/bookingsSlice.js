@@ -23,7 +23,8 @@ const bookingsSlice = createSlice({
                         user: user.name,
                         startDate: booking.startDate,
                         endDate: booking.endDate,
-                        comment: booking.comment
+                        comment: booking.comment,
+                        id: booking._id
                     }
                     array.push(obj)
                 });

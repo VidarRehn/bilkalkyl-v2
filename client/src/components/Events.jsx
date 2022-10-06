@@ -1,30 +1,27 @@
 import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getEvents } from '../redux/eventsSlice'
+import { useSelector } from 'react-redux'
+
+import SectionContainer from '../styled-components/SectionContainer'
+import ListItem from '../styled-components/ListItem'
 
 const Events = () => {
 
-    const dispatch = useDispatch()
     const { events } = useSelector(state => state.events)
-  
-    useEffect(() => {
-      dispatch(getEvents())
-    }, [])
 
     return (
-        <div>
+        <SectionContainer>
           <h4>Körningar</h4>
           <ul>
             {events && events.map((event, i) => {
               return (
-                <li key={i}>
+                <ListItem key={i}>
                   <p>{event.user}</p>
                   <p>{event.mileageBefore}</p>
-                </li>
+                </ListItem>
               )
             })}
           </ul>
-        </div>
+        </SectionContainer>
     )
 }
 

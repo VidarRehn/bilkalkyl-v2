@@ -1,15 +1,9 @@
 import { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getPayments } from '../redux/paymentsSlice'
+import { useSelector } from 'react-redux'
 
 const Payments = () => {
 
-    const dispatch = useDispatch()
     const { payments } = useSelector(state => state.payments)
-  
-    useEffect(() => {
-      dispatch(getPayments())
-    }, [])
 
     return (
         <div>
