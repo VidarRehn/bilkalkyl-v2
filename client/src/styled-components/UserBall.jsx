@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 const UserBall = styled.div`
-    margin-right: 10px;
+    margin-right: 15px;
     height: 35px;
     width: 35px;
     border-radius: 50%;

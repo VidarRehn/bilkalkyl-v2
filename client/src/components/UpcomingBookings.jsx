@@ -26,6 +26,7 @@ const UpcomingBookings = () => {
     }, [bookings])
 
     return (
+        <>
         <SectionContainer>
             <h4>Kommande bokningar</h4>
             <ul>
@@ -37,16 +38,19 @@ const UpcomingBookings = () => {
                     let endMonth = new Date(booking.startDate).toLocaleString('default', {month: 'short'})
                     return (
                         <ListItem key={i}>
-                            <UserBall hej>XX</UserBall>
+                            <UserBall>XX</UserBall>
                             <div>
                                 <strong>{booking.comment}</strong>
                                 <p>{`${startDay} ${startMonth} - ${endDay} ${endMonth}`}</p>
                             </div>
+                            {/* <button>remove</button> */}
                         </ListItem>
                     )
                 })}
             </ul>
+            <a href='#'>See all bookings</a>
         </SectionContainer>
+        </>
     )
 }
 
