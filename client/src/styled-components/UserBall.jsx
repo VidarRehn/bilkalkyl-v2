@@ -8,14 +8,14 @@ const UserBall = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
     color: white;
+    background-color: pink;
 
-    ${props =>
+    /* ${props =>
         props.hej &&
         css`
           background-color: green;
-        `};
+        `}; */
 `
 
 

@@ -48,7 +48,6 @@ const UpcomingBookings = () => {
                     )
                 })}
             </ul>
-            <a href='#'>See all bookings</a>
         </SectionContainer>
         </>
     )

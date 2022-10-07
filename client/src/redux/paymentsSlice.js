@@ -17,7 +17,7 @@ const paymentsSlice = createSlice({
     extraReducers: {
         [getPayments.fulfilled]: (state, action) => {
             let array = [] 
-            action.payload.forEach(user => {
+            action.payload.filter(user => user.name !== 'Harriet & Jon-Erik').forEach(user => {
                 user.payments.forEach(payment => {
                     let obj = {
                         user: user.name,

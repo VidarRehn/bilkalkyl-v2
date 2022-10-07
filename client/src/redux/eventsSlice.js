@@ -17,7 +17,7 @@ const eventsSlice = createSlice({
     extraReducers: {
         [getEvents.fulfilled]: (state, action) => {
             let array = [] 
-            action.payload.forEach(user => {
+            action.payload.filter(user => user.name !== 'Harriet & Jon-Erik').forEach(user => {
                 user.events.forEach(event => {
                     let obj = {
                         user: user.name,
