@@ -12,6 +12,7 @@ const Stats = () => {
     const { events } = useSelector(state => state.events)
 
     const [paymentsChartData, setPaymentsCharttData] = useState(null) 
+    const [eventsChartData, setEventsCharttData] = useState(null) 
     
     useEffect(() => {
         if (users) {
@@ -32,16 +33,33 @@ const Stats = () => {
                     ]
                 }]
             })
+            setEventsCharttData({
+                labels: users.map(user => user.name),
+                datasets: [{
+                    label: 'Förbrukat',
+                    data: users.map(user => {
+                        let initial = 0
+                        let payments = user.events.map(event => {
+                            return event.mileageAfter - event.mileageBefore
+                        })
+                        let reduced = payments.reduce((a, b) => a + b, initial)
+                        return reduced
+                    }),
+                    backgroundColor: [
+                        "#ffbb11",
+                        "#50AF95",
+                        "#2a71d0"
+                    ]
+                }]
+            })
         }
     }, [users])
-
-    console.log(paymentsChartData)
 
     return (
         <>
         <SectionContainer>
             <h4>Statistik</h4>
-            <div>
+            <div className='charts'>
                 {paymentsChartData && 
                 <Pie 
                     data={paymentsChartData}
@@ -50,6 +68,24 @@ const Stats = () => {
                             title: {
                                 display: true,
                                 text: 'Betalt'
+                            },
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }}
+                />}
+                 {eventsChartData && 
+                <Pie 
+                    data={eventsChartData}
+                    options={{
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: 'Förbrukat'
+                            },
+                            legend: {
+                                display: false
                             }
                         }
                     }}
