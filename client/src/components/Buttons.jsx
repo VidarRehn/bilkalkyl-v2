@@ -5,7 +5,6 @@ import SectionContainer from "../styled-components/SectionContainer"
 
 const ButtonsContainer = styled.div`
     max-width: 480px;
-    margin-top: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,19 +27,18 @@ const Buttons = () => {
 
     return (
         <SectionContainer>
-        <h4>Registrera</h4>
         <ButtonsContainer className="buttons-container">
             <Button onClick={() => navigate('/register-event')}>
                 <i className="fa-solid fa-car-side"></i>
-                <p className="type">Körning</p>
+                <p className="type">Ny körning</p>
             </Button>
             <Button onClick={() => navigate('/register-payment')}>
                 <i class="fa-regular fa-credit-card"></i>
-                <p className="type">Betalning</p>
+                <p className="type">Ny betalning</p>
             </Button>
             <Button onClick={() => navigate('/register-booking')}>
                 <i class="fa-regular fa-calendar"></i>
-                <p className="type">Bokning</p>
+                <p className="type">Boka bil</p>
             </Button>
         </ButtonsContainer>
         </SectionContainer>

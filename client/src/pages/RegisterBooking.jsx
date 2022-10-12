@@ -48,9 +48,35 @@ const RegisterBooking = () => {
         }
     `
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked')
+        checkboxes.forEach(checkbox => {
+            postNewBooking(checkbox.id)
+        })
+    }
+
+    const postNewBooking = async (id) => {
+        await fetch(`/api/users/${id}/bookings`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                $push: {
+                    bookings: {
+                        startDate: document.querySelector('#start-date').value,
+                        endDate: document.querySelector('#end-date').value,
+                        comment: document.querySelector('#comment').value
+                    }
+                }
+            })
+        })
+    }
+
     return (
         <>
-            <Form>
+            <Form onSubmit={(e) => handleSubmit(e)}>
                 <h2>Ny Bokning</h2>
                 <div>
                     <label htmlFor="start-date">Startdatum</label>
@@ -65,7 +91,7 @@ const RegisterBooking = () => {
                         return (
                             <div key={i} className='checkbox-container'>
                                 <label htmlFor="">{user.name}</label>
-                                <input type="checkbox" />
+                                <input type="checkbox" id={user._id} />
                             </div>
                         )
                     })}

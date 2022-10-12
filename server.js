@@ -43,6 +43,18 @@ app.get('/api/payments', (req, res) => {
     User.find({}, {payments: 1, name: 1}).then(data => res.json(data))
 })
 
+app.post('/api/users/:id/bookings', (req, res) => {
+    User.findOneAndUpdate({_id: req.params.id}, {
+        $push: {
+            bookings: {
+                startDate: req.body.$push.bookings.startdate,
+                endDate: req.body.$push.bookings.endDate,
+                comment: req.body.$push.bookings.comment
+            }
+        }
+    })
+})
+
 
 // build/static
 
