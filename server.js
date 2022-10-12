@@ -44,7 +44,6 @@ app.get('/api/payments', (req, res) => {
 })
 
 app.post('/api/users/:id/bookings', (req, res) => {
-    console.log(req.body.$push.bookings.startDate)
     User.findOneAndUpdate({_id: mongoose.Types.ObjectId(req.params.id)}, {
         $push: {
             bookings: {

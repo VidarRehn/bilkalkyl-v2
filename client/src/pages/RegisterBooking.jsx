@@ -63,12 +63,10 @@ const RegisterBooking = () => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                $push: {
-                    bookings: {
-                        startDate: document.querySelector('#start-date').value,
-                        endDate: document.querySelector('#end-date').value,
-                        comment: document.querySelector('#comment').value
-                    }
+                bookings: {
+                    startDate: document.querySelector('#start-date').value,
+                    endDate: document.querySelector('#end-date').value,
+                    comment: document.querySelector('#comment').value
                 }
             })
         })
