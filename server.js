@@ -44,16 +44,23 @@ app.get('/api/payments', (req, res) => {
 })
 
 app.post('/api/users/:id/bookings', (req, res) => {
+    console.log(req.body.$push.bookings.startDate)
     User.findOneAndUpdate({_id: mongoose.Types.ObjectId(req.params.id)}, {
         $push: {
             bookings: {
-                startDate: req.body.$push.bookings.startDate,
-                endDate: req.body.$push.bookings.endDate,
-                comment: req.body.$push.bookings.comment
+                startDate: req.body.startDate,
+                endDate: req.body.endDate,
+                comment: req.body.comment
             }
         }
     }).then(data => res.json(data))
 })
+
+// bookings: {
+//     startDate: req.body.$push.bookings.startDate,
+//     endDate: req.body.$push.bookings.endDate,
+//     comment: req.body.$push.bookings.comment
+// }
 
 
 // build/static
