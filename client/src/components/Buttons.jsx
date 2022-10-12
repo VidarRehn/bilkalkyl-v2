@@ -33,11 +33,11 @@ const Buttons = () => {
                 <p className="type">Ny körning</p>
             </Button>
             <Button onClick={() => navigate('/register-payment')}>
-                <i class="fa-regular fa-credit-card"></i>
+                <i className="fa-regular fa-credit-card"></i>
                 <p className="type">Ny betalning</p>
             </Button>
             <Button onClick={() => navigate('/register-booking')}>
-                <i class="fa-regular fa-calendar"></i>
+                <i className="fa-regular fa-calendar"></i>
                 <p className="type">Boka bil</p>
             </Button>
         </ButtonsContainer>

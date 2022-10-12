@@ -81,6 +81,19 @@ app.post('/api/users/:id/payments', (req, res) => {
     }).then(data => res.json(data))
 })
 
+app.post('/api/users/:id/events', (req, res) => {
+    User.findOneAndUpdate({_id: mongoose.Types.ObjectId(req.params.id)}, {
+        $push: {
+            events: {
+                eventDate: req.body.eventDate,
+                mileageBefore: req.body.mileageBefore,
+                mileageAfter: req.body.mileageAfter,
+                distance: req.body.distance
+            }
+        }
+    }).then(data => res.json(data))
+})
+
 // build/static
 
 if(process.env.NODE_ENV === 'production') {

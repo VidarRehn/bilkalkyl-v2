@@ -92,7 +92,7 @@ const RegisterPayment = () => {
                         return (
                             <div key={i} className='checkbox-container'>
                                 <label htmlFor="">{user.name}</label>
-                                <input type="checkbox" />
+                                <input type="checkbox" id={user._id} />
                             </div>
                         )
                     })}

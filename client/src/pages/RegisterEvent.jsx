@@ -1,8 +1,14 @@
-
-import { useSelector } from 'react-redux'
 import styled, { css } from 'styled-components'
 
+import { useNavigate } from "react-router"
+import { useSelector, useDispatch } from 'react-redux'
+
+import { getEvents } from '../redux/eventsSlice'
+
 const RegisterEvent = () => {
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const { users } = useSelector(state => state.users)
     const { lastMileage } = useSelector(state => state.events)
@@ -50,6 +56,31 @@ const RegisterEvent = () => {
         }
     `
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked')
+        checkboxes.forEach(checkbox => {
+            postNewEvent(checkbox.id)
+        })
+    }
+
+    const postNewEvent = async (id) => {
+        await fetch(`/api/users/${id}/events`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                    eventDate: document.querySelector('#date').value,
+                    mileageBefore: document.querySelector('#mileage-before').value,
+                    mileageAfter: document.querySelector('#mileage-after').value,
+                    distance: (document.querySelector('#mileage-after').value - document.querySelector('#mileage-before').value)
+            })
+        })
+        dispatch(getEvents())
+        navigate('/')
+    }
+
     return (
         <>
             <Form>
@@ -63,7 +94,7 @@ const RegisterEvent = () => {
                         return (
                             <div key={i} className='checkbox-container'>
                                 <label htmlFor="">{user.name}</label>
-                                <input type="checkbox" />
+                                <input type="checkbox" id={user._id} />
                             </div>
                         )
                     })}
