@@ -10,7 +10,7 @@ body {
     color: #f0f0f0;
 }
 
-strong.vidar {
+p.vidar {
     color: #e3e24b;
 }
 
@@ -18,10 +18,10 @@ div.vidar {
     background-color: #e3e24b,;
 }
 
-strong.carita {
+p.carita {
     color: #37db78
 }
 
-strong.pappa {
+p.pappa {
     color: #95bdec;
 }

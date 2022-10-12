@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
-import { Pie, Doughnut } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
 import SectionContainer from '../styled-components/SectionContainer'
@@ -82,19 +82,20 @@ const Stats = () => {
         <SectionContainer>
             <h4>Statistik</h4>
             <ul className='stats'>
+                <ListItem>
+                    <p>Användare</p>
+                    <p>Förbrukning</p>
+                    <p>Betalt</p>
+                </ListItem>
                 {stats && stats.stats.map(user => {
                     return (
+                        <>
                         <ListItem>
-                            <strong className={(user.name === 'Vidar & Esther') ? 'vidar' : (user.name === 'Carita & Filip') ? 'carita' :(user.name === 'Harriet & Jon-Erik') ? 'pappa' : null}>{user.name}</strong>
-                            <div>
-                                <p>Förbrukning</p>
-                                <p>{user.driven} km <span>{Math.round((user.driven / stats.totalDriven)*100)}%</span></p>
-                            </div>
-                            <div>
-                                <p>Betalt</p>
-                                <p>{user.paid} SEK <span>{Math.round((user.paid / stats.totalPaid)*100)}%</span></p>
-                            </div>
+                            <p className={(user.name === 'Vidar & Esther') ? 'vidar' : (user.name === 'Carita & Filip') ? 'carita' :(user.name === 'Harriet & Jon-Erik') ? 'pappa' : null}>{user.name}</p>
+                            <p><span className='percentage'>{Math.round((user.driven / stats.totalDriven)*100)}%</span> <span className='in-brackets'>({user.driven} km)</span></p>
+                            <p><span className='percentage'>{Math.round((user.paid / stats.totalPaid)*100)}%</span> <span className='in-brackets'>({user.paid} SEK)</span></p>
                         </ListItem>
+                        </>
                     )
                 })}
             </ul>

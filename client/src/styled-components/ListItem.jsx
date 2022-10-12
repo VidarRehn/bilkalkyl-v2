@@ -8,16 +8,25 @@ const ListItem = styled.li`
     display: flex;
     align-items: center;
 
-    /* button {
-        display: none;
+    p:first-of-type {
+        flex-basis: 40%;
     }
 
-    &:hover {
+    p {
+        flex-basis: 30%;
+        font-size: 14px;
 
-        button {
-            display: block;
+        .percentage {
+            font-size: 20px;
+            font-weight: bold;
         }
-    } */
+
+        .in-brackets {
+            font-size: 10px;
+        }
+    }
+
+
 `
 
 export default ListItem

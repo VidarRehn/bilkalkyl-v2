@@ -30,8 +30,7 @@ const UpcomingBookings = () => {
         <SectionContainer>
             <h4>Kommande bokningar</h4>
             <ul>
-                {upcoming && upcoming.map((booking, i) => {
-
+                {upcoming && upcoming.length >0 ? upcoming.map((booking, i) => {
                     let startDay = new Date(booking.startDate).getDate()
                     let startMonth = new Date(booking.startDate).toLocaleString('default', {month: 'short'})
                     let endDay = new Date(booking.startDate).getDate()
@@ -46,7 +45,7 @@ const UpcomingBookings = () => {
                             {/* <button>remove</button> */}
                         </ListItem>
                     )
-                })}
+                }) : <ListItem>Inga kommande bokningar</ListItem>}
             </ul>
         </SectionContainer>
         </>
