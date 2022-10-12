@@ -10,6 +10,11 @@ body {
     color: #f0f0f0;
 }
 
+h1 {
+    font-size: 20px;
+    font-weight: 400;
+}
+
 p.vidar {
     color: #e3e24b;
 }

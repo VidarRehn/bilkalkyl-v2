@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router"
 import styled, { css } from 'styled-components'
 
-import Button from "../styled-components/Button"
 import SectionContainer from "../styled-components/SectionContainer"
 
 const ButtonsContainer = styled.div`
@@ -10,6 +9,17 @@ const ButtonsContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+`
+const Button = styled.button`
+    border: none;
+    padding: 5px 10px;
+    background-color: transparent;
+    font-size: 40px;
+    color: #e076c2;
+
+    .type {
+      font-size: 14px;
+    }
 `
 
 const Buttons = () => {

@@ -9,7 +9,8 @@ export const getEvents = createAsyncThunk('events/getEvents', async () => {
 const eventsSlice = createSlice({
     name: 'events',
     initialState: {
-        events: null
+        events: null,
+        lastMileage: null
     },
     reducers: {
         //actions
@@ -29,6 +30,8 @@ const eventsSlice = createSlice({
                 });
             })
         state.events = array
+        let sortedArray = array.sort((a, b) => b.mileageAfter - a.mileageAfter)
+        state.lastMileage = sortedArray[0].mileageAfter
         },
         [getEvents.pending]: (state) => {
             state.status = 'Loading...'
