@@ -83,7 +83,7 @@ const RegisterEvent = () => {
 
     return (
         <>
-            <Form>
+            <Form onSubmit={(e) => handleSubmit(e)}>
                 <h2>Ny körning</h2>
                 <div>
                     <label htmlFor="date">Datum</label>
