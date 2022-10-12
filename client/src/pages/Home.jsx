@@ -1,5 +1,3 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { useState, useEffect } from 'react'
 
 import Header from "../components/Header"
 import UpcomingBookings from "../components/UpcomingBookings"
