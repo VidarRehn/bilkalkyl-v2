@@ -1,7 +1,14 @@
-import { useSelector } from "react-redux"
 import styled, { css } from 'styled-components'
 
+import { useSelector, useDispatch } from "react-redux"
+import { useNavigate } from "react-router"
+
+import { getBookings } from '../redux/bookingsSlice'
+
 const RegisterBooking = () => {
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const { users } = useSelector(state => state.users)
 
@@ -68,6 +75,8 @@ const RegisterBooking = () => {
                     comment: document.querySelector('#comment').value
             })
         })
+        dispatch(getBookings())
+        navigate('/')
     }
 
     return (

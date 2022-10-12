@@ -69,12 +69,17 @@ app.post('/api/users/:id/bookings', (req, res) => {
     }).then(data => res.json(data))
 })
 
-// bookings: {
-//     startDate: req.body.$push.bookings.startDate,
-//     endDate: req.body.$push.bookings.endDate,
-//     comment: req.body.$push.bookings.comment
-// }
-
+app.post('/api/users/:id/payments', (req, res) => {
+    User.findOneAndUpdate({_id: mongoose.Types.ObjectId(req.params.id)}, {
+        $push: {
+            payments: {
+                paymentDate: req.body.paymentDate,
+                amountPaid: req.body.amountPaid,
+                comment: req.body.comment
+            }
+        }
+    }).then(data => res.json(data))
+})
 
 // build/static
 

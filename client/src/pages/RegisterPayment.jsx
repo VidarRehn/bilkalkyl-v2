@@ -1,7 +1,14 @@
-import { useSelector } from 'react-redux'
 import styled, { css } from 'styled-components'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from "react-router"
+
+import { getPayments } from '../redux/paymentsSlice'
+
 const RegisterPayment = () => {
+    
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const { users } = useSelector(state => state.users)
 
@@ -48,9 +55,33 @@ const RegisterPayment = () => {
         }
     `
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked')
+        checkboxes.forEach(checkbox => {
+            postNewPayment(checkbox.id)
+        })
+    }
+
+    const postNewPayment = async (id) => {
+        await fetch(`/api/users/${id}/payments`, {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                    paymentDate: document.querySelector('#date').value,
+                    amountPaid: document.querySelector('#amount').value,
+                    comment: document.querySelector('#comment').value
+            })
+        })
+        dispatch(getPayments())
+        navigate('/')
+    }
+
     return (
         <>
-            <Form>
+            <Form onSubmit={(e) => handleSubmit(e)}>
             <h2>Ny betalning</h2>
                 <div>
                     <label htmlFor="date">Datum</label>
