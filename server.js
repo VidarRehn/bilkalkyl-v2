@@ -52,7 +52,7 @@ app.post('/api/users/:id/bookings', (req, res) => {
                 comment: req.body.$push.bookings.comment
             }
         }
-    })
+    }).then(data => res.json(data))
 })
 
 
