@@ -18,9 +18,23 @@ mongoose.connect('mongodb+srv://vidar:vidar@cluster0.biajbry.mongodb.net/bilkalk
 //data schema + model
 
 const userSchema = {
-    name: String,
-    category: String,
-    inShoppingList: Boolean
+    name: {type: String, required: true},
+    bookings: [{
+        startDate: String,
+        endDate: String,
+        comment: String,
+    }],
+    events: [{
+        eventDate: String,
+        mileageBefore: Number,
+        mileageAfter: Number,
+        distance: Number
+    }],
+    payments: [{
+        paymentDate: String,
+        amountPaid: Number,
+        comment: String
+    }]
 }
 
 const User = mongoose.model('User', userSchema)
