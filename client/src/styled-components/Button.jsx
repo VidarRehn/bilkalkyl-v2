@@ -1,13 +1,21 @@
 import styled, { css } from 'styled-components'
 
 const Button = styled.button`
-    background-color: red;
+    border: none;
+    padding: 5px 10px;
+    background-color: transparent;
+    font-size: 40px;
+    color: #e076c2;
 
-    ${props =>
+    .type {
+      font-size: 14px;
+    }
+
+    /* ${props =>
         props.primary &&
         css`
           background-color: green;
-        `};
+        `}; */
 `
 
 export default Button

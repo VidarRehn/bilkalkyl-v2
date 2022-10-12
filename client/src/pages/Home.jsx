@@ -7,11 +7,9 @@ import { getEvents } from '../redux/eventsSlice'
 import { getUsers } from '../redux/usersSlice'
 
 import Header from "../components/Header"
-import Bookings from "../components/Bookings"
-import Events from "../components/Events"
-import Payments from "../components/Payments"
 import UpcomingBookings from "../components/UpcomingBookings"
 import Stats from '../components/Stats'
+import Buttons from '../components/Buttons'
 
 import MobileContainer from "../styled-components/MobileContainer"
 
@@ -31,6 +29,7 @@ const Home = () => {
         <MobileContainer>
             <Header />
             <UpcomingBookings />
+            <Buttons />
             <Stats />
             {/* <Bookings /> */}
             {/* <Events /> */}

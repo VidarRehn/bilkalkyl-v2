@@ -15,6 +15,8 @@ const ListItem = styled.li`
     p {
         flex-basis: 30%;
         font-size: 14px;
+        display: flex;
+        flex-direction: column;
 
         .percentage {
             font-size: 20px;
@@ -22,10 +24,14 @@ const ListItem = styled.li`
         }
 
         .in-brackets {
-            font-size: 10px;
+            font-size: 12px;
         }
-    }
 
+    }
+    
+    .header {
+        font-size: 12px;
+    }
 
 `
 

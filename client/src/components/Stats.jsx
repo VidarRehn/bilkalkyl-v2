@@ -83,19 +83,17 @@ const Stats = () => {
             <h4>Statistik</h4>
             <ul className='stats'>
                 <ListItem>
-                    <p>Användare</p>
-                    <p>Förbrukning</p>
-                    <p>Betalt</p>
+                    <p className='header'></p>
+                    <p className='header'>Förbrukning</p>
+                    <p className='header'>Betalt</p>
                 </ListItem>
-                {stats && stats.stats.map(user => {
+                {stats && stats.stats.map((user, i) => {
                     return (
-                        <>
-                        <ListItem>
+                        <ListItem key={i}>
                             <p className={(user.name === 'Vidar & Esther') ? 'vidar' : (user.name === 'Carita & Filip') ? 'carita' :(user.name === 'Harriet & Jon-Erik') ? 'pappa' : null}>{user.name}</p>
                             <p><span className='percentage'>{Math.round((user.driven / stats.totalDriven)*100)}%</span> <span className='in-brackets'>({user.driven} km)</span></p>
                             <p><span className='percentage'>{Math.round((user.paid / stats.totalPaid)*100)}%</span> <span className='in-brackets'>({user.paid} SEK)</span></p>
                         </ListItem>
-                        </>
                     )
                 })}
             </ul>
