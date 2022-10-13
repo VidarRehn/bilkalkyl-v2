@@ -8,11 +8,15 @@ const ListItem = styled.li`
     display: flex;
     align-items: center;
 
-    p:first-of-type {
-        flex-basis: 40%;
+    ${props => props.basic && css`
+        background: transparent;
+    `}
+
+    >p:first-of-type {
+        flex-basis: 35%;
     }
 
-    p {
+    p, div:not(.miniature) {
         flex-basis: 30%;
         font-size: 14px;
         display: flex;
@@ -27,6 +31,11 @@ const ListItem = styled.li`
             font-size: 12px;
         }
 
+    }
+
+    .miniature {
+        flex-basis: 30%;
+        display: flex;
     }
     
     .header {

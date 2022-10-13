@@ -1,14 +1,56 @@
+import styled, { css } from 'styled-components'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import ListItem from '../styled-components/ListItem'
-import UserBall from '../styled-components/UserBall'
 import SectionContainer from '../styled-components/SectionContainer'
+
+const Container = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        background-color: transparent;
+        border: none;
+    }
+
+    i {
+        color: #d6d6d6;
+        font-size: 20px;
+        margin-right: 18px;
+    }
+`
+
+const ListItem = styled.li`
+    padding: 10px 20px;
+    margin-top: 5px;
+    background-color: #353535;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+
+    >p:first-of-type {
+        flex-basis: 35%;
+    }
+
+    >p:nth-of-type(2) {
+        flex-basis: 60%;
+    }
+
+    button {
+        flex-basis: 5%;
+        justify-self: flex-end;
+        background-color: transparent;
+        border: none;
+        color: #d6d6d6;
+        font-size: 18px;
+    }
+`
 
 const UpcomingBookings = () => {
 
     const { bookings } = useSelector(state => state.bookings)
     const [upcoming, setUpcoming] = useState(null)
+    const [showUpcoming, setShowUpcoming] = useState(false)
 
     const getUpcoming = () => {
         const today = new Date().getTime()
@@ -28,25 +70,26 @@ const UpcomingBookings = () => {
     return (
         <>
         <SectionContainer>
-            <h4>Kommande bokningar</h4>
+            <Container>
+                <h4>Kommande bokningar</h4>
+                <button onClick={() => setShowUpcoming(!showUpcoming)}>
+                    {showUpcoming ? <i className="fa-solid fa-circle-chevron-up"></i> : <i className="fa-solid fa-circle-chevron-down"></i>}
+                </button>
+            </Container>
+            {showUpcoming && (
             <ul>
                 {upcoming && upcoming.length >0 ? upcoming.map((booking, i) => {
-                    let startDay = new Date(booking.startDate).getDate()
-                    let startMonth = new Date(booking.startDate).toLocaleString('default', {month: 'short'})
-                    let endDay = new Date(booking.startDate).getDate()
-                    let endMonth = new Date(booking.startDate).toLocaleString('default', {month: 'short'})
                     return (
                         <ListItem key={i}>
-                            <UserBall>XX</UserBall>
-                            <div>
-                                <strong>{booking.comment}</strong>
-                                <p>{`${startDay} ${startMonth} - ${endDay} ${endMonth}`}</p>
-                            </div>
-                            {/* <button>remove</button> */}
+                            <p className={(booking.user === 'Vidar & Esther') ? 'vidar' : (booking.user === 'Carita & Filip') ? 'carita' :(booking.user === 'Harriet & Jon-Erik') ? 'pappa' : null}>{booking.user}</p>
+                            <p>{`${booking.startDate} - ${booking.endDate}`}</p>
+                            <button><i className="fa-solid fa-trash-can"></i></button>
+                            {/* <p>{booking.comment}</p> */}
                         </ListItem>
                     )
                 }) : <ListItem>Inga kommande bokningar</ListItem>}
             </ul>
+            )}
         </SectionContainer>
         </>
     )

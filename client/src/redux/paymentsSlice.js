@@ -28,7 +28,9 @@ const paymentsSlice = createSlice({
                     array.push(obj)
                 });
             })
-            state.payments = array
+            let sortedArray = array.sort((a, b) => new Date(b.paymentDate) - new Date(a.paymentDate))
+            state.payments = sortedArray
+            
         },
         [getPayments.pending]: (state) => {
             state.status = 'Loading...'

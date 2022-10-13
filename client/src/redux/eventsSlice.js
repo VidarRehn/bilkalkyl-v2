@@ -29,8 +29,8 @@ const eventsSlice = createSlice({
                     array.push(obj)
                 });
             })
-        state.events = array
         let sortedArray = array.sort((a, b) => b.mileageAfter - a.mileageAfter)
+        state.events = sortedArray
         state.lastMileage = sortedArray[0].mileageAfter
         },
         [getEvents.pending]: (state) => {

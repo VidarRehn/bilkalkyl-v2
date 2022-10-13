@@ -82,7 +82,7 @@ const Stats = () => {
         <SectionContainer>
             <h4>Statistik</h4>
             <ul className='stats'>
-                <ListItem>
+                <ListItem basic>
                     <p className='header'></p>
                     <p className='header'>Förbrukning</p>
                     <p className='header'>Betalt</p>
