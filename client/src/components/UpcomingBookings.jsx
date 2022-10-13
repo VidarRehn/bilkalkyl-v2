@@ -66,6 +66,13 @@ const UpcomingBookings = () => {
         setUpcoming(upcoming)
     }
 
+    const removeBooking = async (user, bookingId) => {
+        let isExecuted = window.confirm('Är du säker på att du vill ta bort denna bokning?')
+        if (isExecuted) {
+            await fetch(`api/users/${user}/bookings/${bookingId}`, {method: 'put'})
+        }
+    }
+
     useEffect(() => {
         if (bookings) {
             getUpcoming()
@@ -84,11 +91,12 @@ const UpcomingBookings = () => {
             {showUpcoming && (
             <ul>
                 {upcoming && upcoming.length >0 ? upcoming.map((booking, i) => {
+                    console.log(booking)
                     return (
                         <ListItem key={i}>
                             <p className={(booking.user === 'Vidar & Esther') ? 'vidar' : (booking.user === 'Carita & Filip') ? 'carita' :(booking.user === 'Harriet & Jon-Erik') ? 'pappa' : null}>{booking.user}</p>
                             <p>{`${booking.startDate} - ${booking.endDate}`}</p>
-                            <button><i className="fa-solid fa-trash-can"></i></button>
+                            <button onClick={() => removeBooking(booking.user, booking.id)}><i className="fa-solid fa-trash-can"></i></button>
                             {/* <p>{booking.comment}</p> */}
                         </ListItem>
                     )

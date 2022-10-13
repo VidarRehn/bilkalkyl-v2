@@ -94,6 +94,30 @@ app.post('/api/users/:id/events', (req, res) => {
     }).then(data => res.json(data))
 })
 
+app.put('/api/users/:name/bookings/:bookingId', (req, res) => {
+    User.findOneAndUpdate({name: req.params.name}, {
+        $pull: {
+            bookings: {_id: mongoose.Types.ObjectId(req.params.bookingId)}
+        }
+    }).then(data => res.json(data))
+})
+
+app.put('/api/users/:id/events/:eventId', (req, res) => {
+    User.findOneAndUpdate({_id: mongoose.Types.ObjectId(req.params.id)}, {
+        $pull: {
+            bookings: {_id: mongoose.Types.ObjectId(req.params.eventId)}
+        }
+    }).then(data => res.json(data))
+})
+
+app.put('/api/users/:id/payments/:paymentId', (req, res) => {
+    User.findOneAndUpdate({_id: mongoose.Types.ObjectId(req.params.id)}, {
+        $pull: {
+            bookings: {_id: mongoose.Types.ObjectId(req.params.paymentId)}
+        }
+    }).then(data => res.json(data))
+})
+
 // build/static
 
 if(process.env.NODE_ENV === 'production') {
