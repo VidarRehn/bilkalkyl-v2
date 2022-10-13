@@ -24,7 +24,8 @@ const eventsSlice = createSlice({
                         user: user.name,
                         eventDate: event.eventDate,
                         mileageBefore: event.mileageBefore,
-                        mileageAfter: event.mileageAfter,   
+                        mileageAfter: event.mileageAfter,
+                        _id: event._id   
                     }
                     array.push(obj)
                 });

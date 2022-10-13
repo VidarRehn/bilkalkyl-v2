@@ -24,6 +24,7 @@ const paymentsSlice = createSlice({
                         amountPaid: payment.amountPaid,
                         paymentDate: payment.paymentDate,
                         comment: payment.comment,   
+                        _id: payment._id
                     }
                     array.push(obj)
                 });
