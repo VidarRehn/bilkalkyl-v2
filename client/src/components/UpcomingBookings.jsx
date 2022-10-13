@@ -16,17 +16,21 @@ const Container = styled.div`
     i {
         color: #d6d6d6;
         font-size: 20px;
-        margin-right: 18px;
+        margin-right: 10px;
     }
 `
 
 const ListItem = styled.li`
-    padding: 10px 20px;
+    padding: 10px;
     margin-top: 5px;
     background-color: #353535;
     list-style-type: none;
     display: flex;
     align-items: center;
+
+    >* {
+        padding: 0px 5px;
+    }
 
     >p:first-of-type {
         flex-basis: 35%;

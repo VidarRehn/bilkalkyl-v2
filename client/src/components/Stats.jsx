@@ -7,7 +7,7 @@ import Chart from 'chart.js/auto';
 import SectionContainer from '../styled-components/SectionContainer'
 
 const ListItem = styled.li`
-    padding: 10px 20px;
+    padding: 10px;
     margin-top: 5px;
     background-color: #353535;
     list-style-type: none;
@@ -17,6 +17,10 @@ const ListItem = styled.li`
     ${props => props.basic && css`
         background: transparent;
     `}
+
+    >* {
+        padding: 0px 5px;
+    }
 
     >p {
         flex-basis:30%;
