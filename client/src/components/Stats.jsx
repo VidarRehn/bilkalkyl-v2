@@ -1,10 +1,47 @@
+import styled, { css } from 'styled-components'
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux'
 import { Doughnut } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
 import SectionContainer from '../styled-components/SectionContainer'
-import ListItem from '../styled-components/ListItem'
+
+const ListItem = styled.li`
+    padding: 10px 20px;
+    margin-top: 5px;
+    background-color: #353535;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+
+    ${props => props.basic && css`
+        background: transparent;
+    `}
+
+    >p {
+        flex-basis:30%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    >p:first-of-type {
+        flex-basis: 35%;
+    }
+
+    .percentage {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .in-brackets {
+        font-size: 12px;
+    }
+    
+    .header {
+        font-size: 12px;
+    }
+
+`
 
 const Stats = () => {
 

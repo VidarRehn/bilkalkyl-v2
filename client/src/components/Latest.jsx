@@ -45,6 +45,14 @@ const ListItem = styled.li`
 
     >p:nth-of-type(2) {
         flex-basis: 30%;
+        font-size: 12px;
+    }
+
+    .miniature {
+
+        p {
+            font-size: 12px;
+        }
     }
 
     button {
@@ -53,7 +61,7 @@ const ListItem = styled.li`
         background-color: transparent;
         border: none;
         color: #d6d6d6;
-        font-size: 18px;
+        font-size: 16px;
     }
 
 `
