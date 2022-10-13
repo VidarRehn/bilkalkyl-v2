@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components'
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import SectionContainer from '../styled-components/SectionContainer'
+
+import { getBookings } from '../redux/bookingsSlice'
 
 const Container = styled.div`
     display: flex;
@@ -53,6 +55,8 @@ const ListItem = styled.li`
 
 const UpcomingBookings = () => {
 
+    const dispatch = useDispatch()
+
     const { bookings } = useSelector(state => state.bookings)
     const [upcoming, setUpcoming] = useState(null)
     const [showUpcoming, setShowUpcoming] = useState(false)
@@ -70,6 +74,8 @@ const UpcomingBookings = () => {
         let isExecuted = window.confirm('Är du säker på att du vill ta bort denna bokning?')
         if (isExecuted) {
             await fetch(`api/users/${user}/bookings/${bookingId}`, {method: 'put'})
+            dispatch(getBookings())
+            setShowUpcoming(false)
         }
     }
 

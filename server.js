@@ -102,18 +102,18 @@ app.put('/api/users/:name/bookings/:bookingId', (req, res) => {
     }).then(data => res.json(data))
 })
 
-app.put('/api/users/:id/events/:eventId', (req, res) => {
-    User.findOneAndUpdate({_id: mongoose.Types.ObjectId(req.params.id)}, {
+app.put('/api/users/:name/events/:eventId', (req, res) => {
+    User.findOneAndUpdate({name: req.params.name}, {
         $pull: {
-            bookings: {_id: mongoose.Types.ObjectId(req.params.eventId)}
+            events: {_id: mongoose.Types.ObjectId(req.params.eventId)}
         }
     }).then(data => res.json(data))
 })
 
-app.put('/api/users/:id/payments/:paymentId', (req, res) => {
-    User.findOneAndUpdate({_id: mongoose.Types.ObjectId(req.params.id)}, {
+app.put('/api/users/:name/payments/:paymentId', (req, res) => {
+    User.findOneAndUpdate({name: req.params.name}, {
         $pull: {
-            bookings: {_id: mongoose.Types.ObjectId(req.params.paymentId)}
+            payments: {_id: mongoose.Types.ObjectId(req.params.paymentId)}
         }
     }).then(data => res.json(data))
 })
