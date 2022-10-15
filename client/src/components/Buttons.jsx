@@ -1,5 +1,9 @@
-import { useNavigate } from "react-router"
+import { useState } from "react"
 import styled, { css } from 'styled-components'
+
+import BookingForm from "./BookingForm"
+import EventForm from "./EventForm"
+import PaymentForm from "./PaymentForm"
 
 import SectionContainer from "../styled-components/SectionContainer"
 
@@ -22,25 +26,35 @@ const Button = styled.button`
 `
 
 const Buttons = () => {
+    
+    const [showForm, setShowForm] = useState(false)
 
-    const navigate = useNavigate()
+    const handleClick = (x) => {
+        if (!showForm) {
+            setShowForm(x)
+        } else {
+            setShowForm(false)
+        }
+
+    }
 
     return (
         <SectionContainer>
         <ButtonsContainer className="buttons-container">
-            <Button onClick={() => navigate('/register-event')}>
+            <Button onClick={() => handleClick(<EventForm handleClick={handleClick}/>)}>
                 <i className="fa-solid fa-car-side"></i>
                 <p className="type">Ny körning</p>
             </Button>
-            <Button onClick={() => navigate('/register-payment')}>
+            <Button onClick={() => handleClick(<PaymentForm handleClick={handleClick} />)}>
                 <i className="fa-regular fa-credit-card"></i>
                 <p className="type">Ny betalning</p>
             </Button>
-            <Button onClick={() => navigate('/register-booking')}>
+            <Button onClick={() => handleClick(<BookingForm handleClick={handleClick} />)}>
                 <i className="fa-regular fa-calendar"></i>
                 <p className="type">Boka bil</p>
             </Button>
         </ButtonsContainer>
+        {showForm && showForm}
         </SectionContainer>
     )
 }
