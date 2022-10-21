@@ -68,6 +68,9 @@ const Form = styled.form`
         padding: 10px;
         border: none;
         background-color: #e076c2;
+        color: #282828;
+        font-size: 14px;
+        font-weight: bold;
     }
 `
 
@@ -132,7 +135,7 @@ const PaymentForm = ({handleClick}) => {
                         })}
                     </div>
                 </div>
-                <button>Registrera</button>
+                <button>Lägg till</button>
                 {loading && <p>Loading...</p>}
             </Form>
         </>
