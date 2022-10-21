@@ -13,7 +13,7 @@ app.use(cors())
 
 //mongoose
 
-mongoose.connect('mongodb+srv://vidar:vidar@cluster0.biajbry.mongodb.net/bilkalkyl')
+mongoose.connect(process.env.MONGO_URL)
 
 //data schema + model
 
