@@ -7,9 +7,9 @@ import Chart from 'chart.js/auto';
 import SectionContainer from '../styled-components/SectionContainer'
 
 const ListItem = styled.li`
-    padding: 10px;
+    padding: 10px 0;
     margin-top: 5px;
-    background-color: #353535;
+    background-color: #282828;
     list-style-type: none;
     display: flex;
     align-items: center;
@@ -46,6 +46,20 @@ const ListItem = styled.li`
     }
 
 `
+const Container = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        background-color: transparent;
+        border: none;
+    }
+
+    i {
+        color: #d6d6d6;
+        font-size: 20px;
+    }
+`
 
 const Stats = () => {
 
@@ -56,6 +70,7 @@ const Stats = () => {
     const [paymentsChartData, setPaymentsCharttData] = useState(null) 
     const [eventsChartData, setEventsCharttData] = useState(null) 
     const [stats, setStats] = useState(null)
+    const [show, setShow] = useState(false)
     
     useEffect(() => {
         if (users && payments && events) {
@@ -121,7 +136,13 @@ const Stats = () => {
     return (
         <>
         <SectionContainer>
-            <h4>Statistik</h4>
+            <Container>
+                <h4>Statistik</h4>
+                <button onClick={() => setShow(!show)}>    
+                {show ? <i className="fa-solid fa-circle-chevron-up"></i> : <i className="fa-solid fa-circle-chevron-down"></i>}
+                </button>
+            </Container>
+            {show && (
             <ul className='stats'>
                 <ListItem basic>
                     <p className='header'></p>
@@ -138,6 +159,7 @@ const Stats = () => {
                     )
                 })}
             </ul>
+            )}
             <div className='charts'>
                 {paymentsChartData && 
                 <Doughnut 
